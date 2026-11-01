@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
@@ -96,7 +98,7 @@ def descarga_Txt606_periodo_especifico(usuario: str, clave: str, indice_anio: in
         wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="menus"]/li[5]/a' ))).click()
 
         carpeta_descarga = "C:/Users/Domingo Sánchez/Downloads"
-        carpeta_destino = "C:/Users/Domingo Sánchez/Desktop/CONTABILIDAD/OneDrive/Escritorio/CONTABILIDAD/LEYNI RODRIGUEZ/ingresosTerceros607"
+        carpeta_destino = "C:/Users/Domingo Sánchez/Escritorio/DOCUMENTOS TRABAJOS/CONTABILIDAD/DATOS EDISON/INGRESOS_TERCEROS_607"
 
         for archivo in os.listdir(carpeta_descarga):
             if archivo.endswith('.xls'):
@@ -107,4 +109,4 @@ def descarga_Txt606_periodo_especifico(usuario: str, clave: str, indice_anio: in
         driver.quit()
 
 # Desde aquí se llama a la función y se le pasan los parámetros
-descarga_Txt606_periodo_especifico("00100268937", "ESM97", 2)
+descarga_Txt606_periodo_especifico(os.getenv("USUARIO_DGII"), os.getenv("CLAVE_DGII"), 2)

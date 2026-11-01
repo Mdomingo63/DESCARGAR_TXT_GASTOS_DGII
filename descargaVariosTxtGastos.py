@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
@@ -77,7 +79,7 @@ def descargar_Txt606(usuario: str, clave: str, anio: str):
         wait.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="menus"]/li[5]/a'))).click()
         
         carpeta_descarga = os.path.join(os.path.expanduser("~"), "Downloads")
-        carpeta_destino = "C:/Users/Domingo Sánchez/Escritorio/DOCUMENTOS TRABAJOS/CONTABILIDAD/DATOS EDISON/gastostxt"
+        carpeta_destino = "C:/Users/Domingo Sánchez/Escritorio/DOCUMENTOS TRABAJOS/CONTABILIDAD/DATOS EDISON/GASTOS_TXT"
         
         if not os.path.exists(carpeta_destino):
             os.makedirs(carpeta_destino)
@@ -100,4 +102,4 @@ def descargar_Txt606(usuario: str, clave: str, anio: str):
 # Uso de la función dentro del bloque main para evitar ejecución al importar
 if __name__ == "__main__":
     # Ahora pasamos el año directamente como una cadena de texto
-    descargar_Txt606("00100475680", "ESM97", "2026")
+    descargar_Txt606(os.getenv("USUARIO_DGII"), os.getenv("CLAVE_DGII"), "2026")

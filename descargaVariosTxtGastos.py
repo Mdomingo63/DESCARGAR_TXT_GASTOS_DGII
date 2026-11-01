@@ -102,4 +102,8 @@ def descargar_Txt606(usuario: str, clave: str, anio: str):
 # Uso de la función dentro del bloque main para evitar ejecución al importar
 if __name__ == "__main__":
     # Ahora pasamos el año directamente como una cadena de texto
-    descargar_Txt606(os.getenv("USUARIO_DGII"), os.getenv("CLAVE_DGII"), "2026")
+    usuario_dgii = os.getenv("USUARIO_DGII")
+    clave_dgii = os.getenv("CLAVE_DGII")
+    if not usuario_dgii or not clave_dgii:
+        raise ValueError("Faltan las variables de entorno USUARIO_DGII o CLAVE_DGII")
+    descargar_Txt606(usuario_dgii, clave_dgii, "2026")

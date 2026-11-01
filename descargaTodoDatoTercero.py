@@ -109,4 +109,8 @@ def descarga_Txt606_periodo_especifico(usuario: str, clave: str, indice_anio: in
         driver.quit()
 
 # Desde aquí se llama a la función y se le pasan los parámetros
-descarga_Txt606_periodo_especifico(os.getenv("USUARIO_DGII"), os.getenv("CLAVE_DGII"), 2)
+usuario_dgii = os.getenv("USUARIO_DGII")
+clave_dgii = os.getenv("CLAVE_DGII")
+if not usuario_dgii or not clave_dgii:
+    raise ValueError("Faltan las variables de entorno USUARIO_DGII o CLAVE_DGII")
+descarga_Txt606_periodo_especifico(usuario_dgii, clave_dgii, 2)
